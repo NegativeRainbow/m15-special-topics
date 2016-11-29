@@ -32,13 +32,15 @@ for(i in 1:100) {
   # Create test and training data
   # Hint: http://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function-in-r-program
   # 1. Create training and testing datasets by sampling 75% of your data from your `homes` dataframe.
-  
+  training.indices <- sample(seq_len(nrow(homes)), size = sample.size)
+  training.data <- homes[training.indices,]
+  test.data <- homes[-training.indices,]
   
   # 2. Pass your **training data** to the `rpart` function to run a simple classification operation
-  
+  test.results <- rpart(training.data)
   
   # 3. Pass your results to the `AssessFit` function to assess the fit
-  
+  basic.fits <- AssessFit(test.results)
   
   # 4. Store your assessment in the `basic.fits` vector
   
